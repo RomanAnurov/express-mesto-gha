@@ -6,13 +6,8 @@ const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb')
-.then(() => {
-  console.log('Connected');
-})
-.catch((error) => {
-  console.log(`Error during connection ${error}`);
-});
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+
 
 app.use((req, res, next) => {
   req.user = {
