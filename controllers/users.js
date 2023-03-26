@@ -38,13 +38,19 @@ const createUser = (req, res) => {
 const getUserById = (req, res) => {
   const { userId } = req.params;
   User.findById(userId)
-    .orFail()
+
     .then((user) => {
-      res.send(user);
+      if (user) {
+        res.send(user);
+      } else {
+        res.status(NOT_FOUND_ERROR).send({ message: "Пользователь по указанному _id не найден" });
+      }
     })
     .catch((err) => {
-      if (err.name === "DocumentNotFoundError") {
-        res.status(NOT_FOUND_ERROR).send({ message: "Пользователь не найден" });
+      if (err.name === "CastError") {
+        res
+          .status(INCORRECT_DATA_ERROR)
+          .send({ message: "Переданы некорректные данные" });
       } else {
         res
           .status(SERVER_ERROR)
