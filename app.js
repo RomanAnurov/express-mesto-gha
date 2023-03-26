@@ -6,8 +6,17 @@ const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+const NOT_FOUND_ERROR = 404;
 
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb')
+.then(() => {
+  console.log('Connected');
+})
+.catch((error) => {
+  console.log(`Error during connection ${error}`);
+});
+
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   req.user = {
@@ -24,7 +33,10 @@ app.listen(3000, () => {
 });
 
 
-app.use(bodyParser.json());
+
 app.use('/', userRouter);
 app.use('/', cardRouter);
+app.use('', (req, res) => {
+  return res.status(NOT_FOUND_ERROR).send({ message: 'Запрашиваемой странице нет на ресурсе' });
+})
 
