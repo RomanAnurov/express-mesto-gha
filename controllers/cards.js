@@ -52,7 +52,7 @@ const deleteCardById = (req, res) => {
           .send({ message: 'Введены не корректные данные' });
       } else if (err.name === 'DocumentNotFoundError') {
         res
-          .status(404)
+          .status(NOT_FOUND_ERROR)
           .send({ message: 'Карточка с указанным _id не найдена.' });
       } else {
         res
