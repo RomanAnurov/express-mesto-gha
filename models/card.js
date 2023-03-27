@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+
 const cardSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -15,11 +16,11 @@ const cardSchema = new mongoose.Schema({
     ref: 'user',
     required: true,
   },
-  likes: [{type: mongoose.ObjectId}],
+  likes: [{ type: mongoose.ObjectId }],
   createdAt: {
     type: Date,
-    default: Date.now()
-  }
+    default: Date.now(),
+  },
 });
 
 module.exports = mongoose.model('card', cardSchema);
