@@ -4,7 +4,7 @@
   "description": "[![Tests](../../actions/workflows/tests-13-sprint.yml/badge.svg)](../../actions/workflows/tests-13-sprint.yml) [![Tests](../../actions/workflows/tests-14-sprint.yml/badge.svg)](../../actions/workflows/tests-14-sprint.yml)\r # Проект Mesto фронтенд + бэкенд\r * [Ссылка на репозиторий](https://github.com/RomanAnurov/express-mesto-gha)",
   "main": "app.js",
   "scripts": {
-    "lint:fix": "npx eslint . --fix",
+    "lint": "npx eslint .",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
@@ -25,8 +25,12 @@
     "nodemon": "^2.0.21"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
+    "celebrate": "^15.0.1",
     "express": "^4.18.2",
-    "mongoose": "^7.0.2"
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.2",
+    "validator": "^13.9.0"
   }
 }
