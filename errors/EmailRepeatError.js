@@ -5,4 +5,4 @@ class EmailRepeatError extends Error {
   }
 }
 
-module.exports = EmailRepeatError; 
+module.exports = EmailRepeatError;

@@ -1,10 +1,9 @@
 const {
   celebrate,
-  Joi
+  Joi,
 } = require('celebrate');
 
-const urlregExp = /(http:\/\/|https:\/\/)(www)*[a-z0-9\-._~:/?#[\]@!$&'()*+,;=]+#*/;
-
+const urlregExp = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\\+.~#?&\\/\\/=]*)/;
 const createUserValidation = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
@@ -41,7 +40,6 @@ const loginValidation = celebrate({
   }),
 });
 
-
 const createCardValidation = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
@@ -62,5 +60,5 @@ module.exports = {
   updateUserAvatarValidation,
   loginValidation,
   createCardValidation,
-  cardIdValidation
-}
+  cardIdValidation,
+};

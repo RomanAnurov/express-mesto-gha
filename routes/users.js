@@ -2,7 +2,7 @@ const router = require('express').Router();
 const {
   getUserByIdValidation,
   updateUserInfoValidation,
-  updateUserAvatarValidation
+  updateUserAvatarValidation,
 } = require('../middlewares/celebrate-validate');
 
 const {

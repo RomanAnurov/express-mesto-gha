@@ -1,14 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const { errors } = require('celebrate');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const { login, createUser } = require('./controllers/users');
-const { loginValidation, createUserValidation} = require('./middlewares/celebrate-validate')
+const { loginValidation, createUserValidation } = require('./middlewares/celebrate-validate');
 const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/NotFoundError');
+
 const app = express();
-const { errors } = require('celebrate');
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {})
   .then(() => {
@@ -21,7 +22,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {})
 app.use(bodyParser.json());
 app.post('/signin', loginValidation, login);
 app.post('/signup', createUserValidation, createUser);
-
 
 const { PORT = 3000 } = process.env;
 

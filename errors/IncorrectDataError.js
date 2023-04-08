@@ -1,4 +1,3 @@
-
 class IncorrectDataError extends Error {
   constructor(message) {
     super(message);
@@ -6,4 +5,4 @@ class IncorrectDataError extends Error {
   }
 }
 
-module.exports = IncorrectDataError ; 
+module.exports = IncorrectDataError;

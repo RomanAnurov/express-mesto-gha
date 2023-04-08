@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { createCardValidation, cardIdValidation} = require('../middlewares/celebrate-validate');
+const { createCardValidation, cardIdValidation } = require('../middlewares/celebrate-validate');
 
 const {
   getCards,
